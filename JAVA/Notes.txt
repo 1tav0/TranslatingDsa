@@ -1,0 +1,60 @@
+-Download jdk 
+-Add jdk path to .json settings 
+
+How does an app/code run behind the scenes in our machine ?
+- if an os has jvm install then it can run java this is why it is called platform independent.
+**********JVM*************
+- made up of a memory call stack and a memory heap
+- each function in perspective creates a call stack for the code inside it and gets nested until all code lines are executed
+- when an object instance is created, the call stack has a key/value pair behavior for the all the code lines,so the obj will store the value of a memory address from the heap
+- this memory address is from an object that was created in the heap
+- this object is made up of two sections  
+    1. first section will have all the instance variables(variables created for class use only) not local variables, those are processed in the call stacks 
+    2. second section has the definition of the methods the actual method logic goes to the call stacks 
+- the address becomes a link between the stack and the heap 
+- this is the case for every object instance of a class that we make 
+- so essentially if we make many object instances, then we have a lot of call stacks and addresses from the objects in the heap
+What is the Java Virtual Machine (jvm)?
+- structure of computer 
+  - Hardware -> Os -> jvm 
+- our code doesnt translate directly to be able to work by the jvm
+- however: jvm is not platform independent. ie. jvm cannot run in ios
+- ous app is platform independent but jvm isnt 
+- jvm understands byte code aka binary 
+- therefore we need a compiler (javac)
+- java code -> compiler(javac) -> jvm(byte code)
+- main is the entrance for the jvm to start executing the code 
+public static void main(String args[]){}
+- javac outputs a .class byte code file 
+- summary: 
+    - javac filename.java -> creates the byte code file 
+    - java filename -> is the jvm to run the code
+
+********JRE*********
+- In order to maintain an application we must make use of various libraries 
+- In order for all that compilation and then execution we also need an environment for that 
+- Java Runtime Environment 
+- libraries & jvm is a part of jre think of them as nested boxes inputting and outputting 
+- structure: jdk -> jre -> jvm 
+- developers make use of jdk to develop the the executable code however this executable can run on any other system as long as they have the jvm and the jre. This is why java is known as WORA "write once run anywhere"
+- Hardware will have os, os will have jre
+
+*****OOP******
+- Object - properties & behavior 
+- made out of a class 
+
+METHOD OVERLOADING  
+  - Having the same name but different quantity of parameters varying in data type or amount 
+  class Calculator{
+    public int add(int x, int y){
+      return x+y;
+    }
+
+    public double add(double x, int y){
+      return x+y;
+    }
+
+    public int add(int a, int b, int c){
+      return a + b + c;
+    }
+  }

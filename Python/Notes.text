@@ -1,0 +1,371 @@
+1. Which method can be used to remove any whitespace from both the beginning and the end of a string?
+
+******************#javascript*********************
+let str = " Hello World  ";
+let newStr = str.trim();
+console.log(newStr);
+
+*********************#java************************
+public class Solution{
+  public static void main(String[] args){
+    String str = "  Hello World   ";
+    String newStr = str.trim();
+
+    System.out.println(newStr);
+  }
+}
+
+*********************#c++**************************
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+int main(){
+  string str = "   Hello World  ";
+  string newStr  = str;
+  newStr.erase(newStr.begin(), find_if(newStr.begin(), newStr.end(), [](unsigned char ch){
+    return !isspace(ch);
+  }));
+
+  newStr.erase(find_if(newStr.rbegin(), newStr.rend(), [](unsigned char ch) {
+        return !isspace(ch);
+    }).base(), newStr.end());
+}
+
+cout << newStr << endl;
+
+*********************#python****************************
+str = "   Hello World   "
+newStr = str.strip()
+print(newStr);
+
+///////////////////////////////////////////////////////////////
+
+2. Which method can be used to return a string in upper case letters?
+
+***************************#javascript************************
+let str = "hello, world";
+let newStr = "str.toUpperCase();
+console.log(newStr);
+
+***************************#java******************************
+public class Solution{
+  public static void main(String[] args){
+    String str = "hello, world";
+    String newStr = str.toUpperCase();
+
+    System.out.println(newStr);
+  }
+}
+***************************#c++*******************************
+#include <iostream>
+#include <cctype>
+
+int main(){
+  string str = "hello, world";
+  string newStr = str;
+  for(auto c: newStr){
+    c = toupper(c);
+  }
+  cout << newStr << endl;
+
+  return 0;
+}
+***************************#python****************************
+str = "hello, world"
+newStr = str.upper()
+print(newStr)
+
+///////////////////////////////////////////////////////////////
+
+3. which method can be used to replace parts of a string?
+
+***************************#javascript************************
+let str = "Hello, world";
+let newStr = str.replace("Hello", "hi");
+console.log(newStr);
+***************************#java******************************
+public class Solution{
+  public static void main(String[] args){
+    String str = "Hello, World";
+    String newStr = str.replace("Hello", "hi")
+    System.out.println(newStr);
+  }
+}
+***************************#c++*******************************
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+// std::string::npos (a special constant indicating "not found")
+// The replace function takes three parameters: the starting position (index) of the substring to be replaced (found), the number of characters to be replaced (in this case, 5 characters representing "Hello"), and the replacement string ("Hi").
+
+int main(){
+  string str = "Hello, World";
+  string newStr = str;
+
+  size_t found = newStr.find("Hello"); // returns index of first char of first occurrence of hello
+  if(found != string::npos){
+    newStr.replace(found, 5, "hi");
+  }
+
+  cout << newStr << endl;
+}
+
+***************************#python****************************
+str = "Hello, World"
+newStr = str.replace("Hello", "Hi");
+print(newStr);
+
+///////////////////////////////////////////////////////////////
+
+4. Define a list 
+***************************#javascript************************
+let myList = ["1", "2", "3"];
+myList.forEach(item => {
+  console.log(item);
+})
+***************************#java******************************
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution{
+  public static void main(String[], args){
+    List<String> myList = new ArrayList<>();
+    myList.add("1");
+    myList.add("2");
+    myList.add("3");
+
+    for(String item: myLast){
+      System.out.println(item);
+    }
+  }
+}
+***************************#c++*******************************
+#include <iostream>
+#include <vector>
+
+int main(){
+  vector<string> myList = {"1","2","3"};
+  for(auto it: myList){
+    cout << it << endl;
+  }
+  return 0;
+}
+
+***************************#python****************************
+myList = ["1","2","3"]
+for item in myList:  
+  print(element);
+
+///////////////////////////////////////////////////////////////
+
+5. Define a TUPLE (props of it: Ordered, Immutable, Heterogenous)
+***************************#javascript************************
+// JavaScript doesn't have a built-in tuple, but you can use an array or an object to achieve similar functionality.
+
+const tuple = ["apple", 3, 4.5];
+console.log(tuple);
+***************************#java******************************
+// Java doesn't have a built-in tuple, but you can use a library like javatuples to simulate tuple-like behavior.
+
+import org.javatuples.Tuple;
+import org.javatuples.Unit;
+
+public class Main{
+  public static void main(String[] args){
+    Tuple myTuple = Unit.with("1");
+    System.out.println(myTuple);
+  }
+}
+
+***************************#c++*******************************
+// C++ has built-in support for tuples.
+#include <iostream>
+#include <tuple>
+
+// get<0>(myTuple) to access the first element 
+
+int main(){
+  tuple<string,int,double> myTuple = make_tuple("1",42, 3.14);
+  cout << get<0>(myTuple) << endl;
+}
+
+***************************#python****************************
+// Python has built-in support for tuples.
+
+tuple = ("apple", 3, 4.5);
+print(tuple);
+
+///////////////////////////////////////////////////////////////
+
+6. Define a set
+***************************#javascript************************
+let mySet = new Set();
+mySet.add("apple");
+mySet.add("banana");
+mySet.add("orange");
+
+//or 
+
+let mySet = new Set(["apple", "banana", "cherry"]);
+
+console.log(mySet);
+***************************#java******************************
+java.util.HashSet;
+java.util.Set;
+
+public class Solution{
+  public static void main(String[] args){
+    Set<String> mySet = new HashSet<>();
+    mySet.add("apple");
+    mySet.add("banana");
+    mySet.add("orange");
+
+    System.out.println(mySet);
+  }
+}
+***************************#c++*******************************
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+int main(){
+  unordered_set<string> st;
+  st.insert("apple");
+  st.insert("banana");
+  st.insert("orange");
+
+  for(auto& it: st){
+    cout << it << " ";
+  }
+  return 0;
+}
+***************************#python****************************
+mySet = set();
+mySet.add("apple");
+mySet.add("banana");
+mySet.add("orange");
+
+ // or
+
+mySet = {"apple", "banana", "orange"}
+
+print(mySet);
+
+///////////////////////////////////////////////////////////////
+
+7. Define a Dictionary
+***************************#javascript************************
+let myDict = {
+  key1: "value1",
+  key2: "value2",
+  key3: "value3",
+}
+***************************#java******************************
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main{
+  public static void main(String[] args){
+    Map<String, String> myDict = new HashMap<>(){{
+            put("key1", "value1");
+            put("key2", "value2");
+            put("key3", "value3");
+    }};
+
+    // Adding a new key-value pair
+    myMap.put("key4", "value4");
+  }
+}
+***************************#c++*******************************
+#include <iostream>
+#include <unordered_map>
+
+int main(){
+  unordered_map<string, string> myDict = {
+    {"key1", "value1"},
+    {"key2", "value2"},
+    {"key3", "value3"}
+  }
+
+  // adding one way
+  myDict.insert({"key4","value4"});
+  // adding another way
+  myDict["key5"] = "value5";
+}
+***************************#python****************************
+myDict = {"key1":"value1","key2":"value2","key3":"value3"}
+
+//////////////////////////////////////////////////////////////
+
+8. Define a for loop
+***************************#javascript************************
+for(let i=0; i<5; i++){
+  console.log(i);
+}
+
+//or 
+
+const array = {1,2,3,4,5,6,7};
+for(let item of array){
+  console.log(`num is ${item}`);
+}
+***************************#java******************************
+for(int i=0; i<5; i++){
+  System.out.println("num is" + i);
+}
+
+// or
+
+int[] array = {1,2,3,4,5,6,7};
+for(int num: array){
+  Sytem.out.println("num is" + num);
+}
+***************************#c++*******************************
+for(int i=0; i<5; i++){
+  cout << i;
+}
+
+// or
+
+int myArray[] = {10, 20, 30, 40, 50};
+for(auto it: myArray){
+  cout << it << endl;
+}
+***************************#python****************************
+for i in range(5):
+  print(f"num is {i}")
+
+//or 
+
+array = [1,2,3,4,5,6,7];
+for item in array:  
+  print(f"num is: {item}");
+
+9.
+***************************#javascript************************
+
+***************************#java******************************
+
+***************************#c++*******************************
+
+***************************#python****************************
+10.
+***************************#javascript************************
+
+***************************#java******************************
+
+***************************#c++*******************************
+
+***************************#python****************************
+11.
+***************************#javascript************************
+
+***************************#java******************************
+
+***************************#c++*******************************
+
+***************************#python****************************

@@ -1,0 +1,25 @@
+1. set
+2. unordered_set
+3. multiset
+4. unordered_multiset
+5. map
+6. unordered_map
+7. multimap
+8. unordered_multimap
+9. vector
+10. queue
+11. stack
+12. dequeue
+13. priority_queue
+14. list
+15. sort
+16. next_permutation
+17. min_element
+18. max_element
+19. pair
+
+- whenever we write cpp code we will make use of a data structure aka a container.
+- these containers can be lengthy in code to write from scratch
+- that is where the stl comes in
+- the stl library divides into four parts made up of algorithms, containers, iterators,
+and functions for quick access
