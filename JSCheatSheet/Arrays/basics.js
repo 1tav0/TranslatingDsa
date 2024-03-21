@@ -62,5 +62,15 @@ for (let {text,cost,need} of list) {
   }
 }
 
+/* ------> for of loop with entries <------- */
+// key = index, value = item [index, value]
+// for (let [index, { text, cost, need }] of list.entries()) {
+//   if (need) {
+//     html += `<li>${index} ${text}</li>`;
+//     total += cost;
+//   }
+// }
+
+
 document.getElementById('list').innerHTML = html;
 document.getElementById('cost').innerHTML = `$${total}`;
