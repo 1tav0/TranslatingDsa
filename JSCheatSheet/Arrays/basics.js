@@ -30,12 +30,13 @@ let total = 0;
 /* ------> forEach loop <------- */
 // item we are working, index of it, and the array we are working with 
 // list.forEach((item, index, array) =>{})
-// list.forEach((item) => {
-//   if (item.need) {
-//     html += `<li>${item.text}</li>`;
-//     total += item.cost;
-//   }
-// })
+list.forEach((item) => {
+  if (item.need) {
+    html += `<li>${item.text}</li>`;
+    total += item.cost;
+  }
+})
+
 
 //or
 /* ------> forEach loop <------- */
@@ -55,12 +56,12 @@ let total = 0;
 // }
 // or
 /* ------> for of loop <------- */
-for (let {text,cost,need} of list) {
-  if (need) {
-    html += `<li>${text}</li>`;
-    total += cost;
-  }
-}
+// for (let {text,cost,need} of list) {
+//   if (need) {
+//     html += `<li>${text}</li>`;
+//     total += cost;
+//   }
+// }
 
 /* ------> for of loop with entries <------- */
 // key = index, value = item [index, value]
