@@ -1,0 +1,256 @@
+console.log(document.documentElement)
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Introduction to the DOM</title>
+    <style media="screen">
+      body{
+        font-size: 1.5rem;
+        margin: 15px;
+      }
+      .dark{
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="intro-text">Intro to the Document Object Model</h1>
+    <p>This is some content to display in the document.</p>
+    <div>
+      <p>Here is more content inside a div element.</p>
+      <div>
+        <p>And even more content inside a nested div element.</p>
+      </div>
+    </div>
+    <div>
+      <button type="button" name="button"
+        onclick="document.body.classList.toggle('dark')"
+      >Toggle Style</button>
+    </div>
+  </body>
+</html>
+
+- document.head 
+- document.body 
+- document.body.childNodes (returns a list of childnodes)
+
+child nodes - are children of the body
+
+- how our body looks in the DOM 
+<body>
+  <h1 id="intro-text">Intro to the Document Object Model</h1>
+  <p>This is some content to display in the document.</p>
+  <div>
+    <p>Here is more content inside a div element.</p>
+    <div>
+      <p>And even more content inside a nested div element.</p>
+    </div>
+  </div>
+  <div>
+    <button type="button" name="button"
+      onclick="document.body.classList.toggle('dark')"
+    >Toggle Style</button>
+  </div>
+</body>
+
+if we console the child nodes :
+NodeList(13) [text, h1#intro-text, text, p, text, div, text, div, text, comment, text, script, text]
+0: text
+1: h1#intro-text
+2: text
+3:p
+4: text
+5: div
+6: text
+7: div
+8: text
+9: comment
+10: text
+11: script
+12: text
+length: 13
+
+- text is the empty space in the body of the html before the h1 
+- it is also counted as a child node of the body 
+- the DOM itself is not js they are js objects but not part of the js language 
+- documents is not part of js language but it is in the DOM with a lot of functions and properties that we can use js to make changes to it 
+- we are using js to program with these objects from the DOM 
+
+
+- document.body.firstChild.nextSibling aka "walking the dom"
+*********** to avoid "walking the dom"
+- document.getElementById('')
+- create a variable to store the document element and then
+- view its childNodes 
+
+let h1Element = document.getElementById('intro-text')
+h1Element.childNodes 
+
+- we are using js at this point to manipualte the dom 
+- to change the nodeValue inside the element 
+
+h1Element.firstChild.nodeValue = "Whatever value we want to change it to"
+
+- we can also use js to style the DOM 
+h1Element.style.color = "yellow"
+
+
+********To access ALL THE TAGS in the body*******
+- this returns a HTML collection as an ARRAY LIKE DS unlike childNodes
+- hence the iterating over it in a for loop
+
+let pElements = document.getElementsByTagName('p') 
+
+for(let pElement of pElements){
+  pElement.style.color = "red"
+}
+
+- this also returns a HTML collection but for  ALL THE CLASSES
+
+let customDivs = document.getElementsByClassName('custom-bg');
+for(let element of customDivs){
+  element.style.backgroundColor = 'dimgray';
+}
+
+/********* MORE ADAVANCED **********/
+CSS SELECTORS - the html tags divs, p etc 
+
+let pElementsInDivs = document.querySelectorAll('div p');
+for(let element of pElementsInDivs){
+  element.style.fontWeight = 'bold';
+}
+
+let nestedP = document.querySelector('div>p:not(div.custom-bg>p)');
+nestedP.style.textDecoration = 'underline';
+
+- we can use querySelector to find an id like so: 
+let h1Element = document.querySelector('#intro-text');
+
+instead of getElementById but using querySelector includes more overhead than getElementById 
+
+/*********** MANIPULATING THE DOM WITH JS ******************/
+- creating an element with js 
+
+let olElement = document.createElement('ol');
+
+- we create an element like this now we must append it to the document 
+
+document.body.appendChild('olElement');
+
+// this appends the childNode to the end of the list aka if we check in console on elements the newly added olElement will appear after the script element
+
+// to get it to append before the end *****insertBefore***
+
+let scriptElement = document.querySelector('script');
+document.body.insertBefore(olElement, scriptElement);
+
+****or****
+h1Element.insertAdjacentElement('beforebegin', olElement);
+ 
+ - theres 'afterend', 'afterbegin', 'beforeend'
+
+ ************ How to create a TEXTNODE*****
+ - we can create a text node with the string we want to display to the DOM 
+
+ let text = document.createTextNode("Intro to the DOM");
+
+ ******** Using an array to display a list in the DOM******
+ let topics = [
+  'Intro to DOM',
+  'Getting Elements',
+  'Querying the DOM',
+  'Creating Elements'
+ ]
+
+ topics.forEach(function(text){
+  let li = document.createElement('li');
+  li.innerHTML = `<b>${text}</b>`;
+
+  olElementa.appendChild(li);
+ })
+
+
+ ***************Event Handling************
+ - load event: when the page first loads 
+ - we can set up a load event by listenting to the window object.
+ - window: part of browser object model but we can use js to work with it 
+- to load when the page first mounts 
+
+window.onload = functions(){
+  function(){
+        let topics = [
+        'Intro to DOM',
+        'Getting Elements',
+        'Querying the DOM',
+        'Creating Elements',
+        'Removing Elements',
+        'Modifying Element Classes',
+        'Working with Attribute',
+        'DOM Event Basics',
+        'Common DOM Events'
+      ];
+
+      let currentTopicIndex = 6;
+
+      let h1Element = document.getElementById('intro-text');
+      let olElement = document.querySelector('ol');
+      
+      let listTheme = olElement.getAttribute('data-theme') || 'multi';
+
+      h1Element.setAttribute('title', 'Manipulating The DOM(set in javascript by working with title attribute)')
+      
+      topics.forEach(function(text, index){
+        let li = document.createElement('li');
+        li.innerHTML = `<b>${text}</b>`
+
+        li.setAttribute('data-index', index);
+
+        if(listTheme.toLowerCase() === 'multi'){
+          if(index<currentTopicIndex){
+            li.classList.add('text-info');
+          }else if(index > currentTopicIndex){
+            li.classList.add('text-danger');
+          }
+        }
+
+        olElement.appendChild(li);
+      })
+
+      h1Element.insertAdjacentElement('afterend', olElement);
+
+      let currentTopicElement = document.querySelector(`li[data-index="${currentTopicIndex}"]`);
+      currentTopicElement.classList.add('text-warning', 'current-topic');
+      console.log("hello");
+      } 
+}
+- onload only handles one command at a time 
+- the latest definiton of it will be the one executed
+- the dom will not load the function onload but instead console log the hello
+
+window.onload = function(){
+  console.log("hello")
+}
+
+- to get around it we must ADD AN EVENT LISTENER 
+
+// note: 'onload' is the property 'load' is the event
+window.addEventListener('load', callback fn we want to execute)
+
+- the more event listeners you add to your DOM the more the performance degrades 
+- to avoid this we use EVENT DELEGATION 
+IDEA:    we set the click event listener at the top most level so in our case the document, then we check what recieved in the click event, if a button, then toggle. if a li we toggle the background.
+- to determine what element was received when we click: 
+  - given through an event object that browser passes to our function whenever the event occurs 
+  - e for event
+
+  document.addEventListener('click', function(e){
+    console.log(e);
+  })
+
+- we a pointerEvent object bc we are using the mouse to click in the dom 
+
+- we analize the returned object to make use of what we need to determine the type of click event that it was 
+- there is the target object that we can use 
+let target = e.target

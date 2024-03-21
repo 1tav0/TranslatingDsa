@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Introduction to the DOM</title>
+    <style media="screen">
+      body{
+        font-size: 1.5rem;
+        margin: 15px;
+      }
+      .dark{
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="intro-text">Manipulating the DOM</h1>
+    <ul>
+
+    </ul>
+    <script>
+
+      let topics = [
+        'Intro to DOM',
+        'Getting Elements',
+        'Querying the DOM',
+        'Creating Elements',
+        'Removing Elements',
+        'Modifying Element Classes'
+      ];
+
+      let h1Element = document.getElementById('intro-text');
+      let olElement = document.createElement('ol');
+      let scriptElement = document.querySelector('script');
+      // to append the returned removed li element and append it to the ul
+      let ulElement = document.querySelector('ul');
+      
+
+      topics.forEach(function(text){
+        let li = document.createElement('li');
+        li.innerHTML = `<b>${text}</b>`
+
+        olElement.appendChild(li);
+      })
+
+      h1Element.insertAdjacentElement('afterend', olElement);
+
+      //removing the last element in the list using the parent & storing it 
+      // let lastli = olElement.removeChild(olElement.lastChild); 
+      // ulElement.appendChild(lastli);
+
+      //second way of removing it from the DOM not we can still make use of its returned value
+      let lastli = olElement.lastChild;
+      lastli.remove();
+      ulElement.appendChild(lastli);
+    </script>
+  </body>
+</html>
