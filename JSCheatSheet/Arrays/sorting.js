@@ -17,7 +17,7 @@ let list2 = [
 let html = '';
 
 // list.sort().reverse(); // in descending order
-/* ------------------------------------- */
+/* -------------------------------------------------------- */
 //but a better approach is to do this
 // list.sort((a, b) => {
 //   if (a === b) return 0;
@@ -29,11 +29,11 @@ let html = '';
 //   // -1, a sorted before b
 //   // 1, b sorted before a
 // })
-/* ------------------------------------- */
+/* --------------------------------------------------------- */
 // list.forEach((item) => {
 //   html += `<li>${item}</li>`
 // })
-/* ------------------------------------- */
+/* --------------------------------------------------------- */
 
 // the fact that our sort can take in a callback function is an advantage bc we can sort our data however we want 
 

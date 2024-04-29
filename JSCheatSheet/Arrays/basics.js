@@ -8,7 +8,7 @@ let list = [
 
 let html = '';
 let total = 0;
-/* ------> normal for loop <------- */
+/* ------------------- normal for loop --------------------- */
 // for (let i = 0; i < list.length; i++){
 //   if (list[i].need) {
 //     html += `<li>${list[i].text}</li>`
@@ -16,7 +16,7 @@ let total = 0;
 //   }
 // }
 
-/* ------> normal while loop <------- */
+/* ------------------- normal while loop ------------------- */
 // let index = 0;
 // while (index < list.length) {
 //   let item = list[index];
@@ -27,7 +27,7 @@ let total = 0;
 //   index++;
 // }
 
-/* ------> forEach loop <------- */
+/* ----------------- forEach loop -------------------------- */
 // item we are working, index of it, and the array we are working with 
 // list.forEach((item, index, array) =>{})
 list.forEach((item) => {
@@ -39,7 +39,7 @@ list.forEach((item) => {
 
 
 //or
-/* ------> forEach loop <------- */
+/* ------------------- forEach loop ------------------------ */
 // list.forEach(({text, cost, need}) => {
 //   if (need) {
 //     html += `<li>${text}</li>`;
@@ -47,7 +47,7 @@ list.forEach((item) => {
 //   }
 // })
 
-/* ------> for of loop <------- */
+/* ------------------- for of loop ------------------------- */
 // for (let item of list) {
 //   if (item.need) {
 //     html += `<li>${item.text}</li>`;
@@ -55,7 +55,7 @@ list.forEach((item) => {
 //   }
 // }
 // or
-/* ------> for of loop <------- */
+/* ----------------- for of loop --------------------------- */
 // for (let {text,cost,need} of list) {
 //   if (need) {
 //     html += `<li>${text}</li>`;
@@ -63,7 +63,7 @@ list.forEach((item) => {
 //   }
 // }
 
-/* ------> for of loop with entries <------- */
+/* ---------------- for of loop with entries --------------- */
 // key = index, value = item [index, value]
 // for (let [index, { text, cost, need }] of list.entries()) {
 //   if (need) {
