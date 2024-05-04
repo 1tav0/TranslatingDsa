@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
+/************************Grid*************************/
 class Solution{
 public:
   /* ------------------------------------------------------------------- */
@@ -60,6 +60,8 @@ public:
 
   /* ------------------------------------------------------------------- */
   //Tabulation
+  //tc - O(nxm) + O(n)
+  //sc - O(nxm)
   int getMaxPathSum3(vector<vector<int>> &matrix){
     int n = matrix.size();
     int m = matrix[0].size();
@@ -90,6 +92,42 @@ public:
       maxi = max(maxi, dp[n-1][j]);
     }
 
+    return maxi;
+  }
+
+  /* ------------------------------------------------------------------- */
+  //Space Optimization
+  //tc - O(nxm) + O(m)
+  //sc - O(n) no more dp auxilary array
+  int getMaxPathSum(vector<vector<int>> &matrix){
+    int n = matrix.size();
+    int m = matrix[0].size();
+    vector<int> prev(m+1, -1);
+    for(int j=0; j<m; j++) prev[j] = matrix[0][j];
+
+    for(int i=1; i<n; i++){
+      vector<int> current(m+1, -1);
+      for(int j=0; j<m; j++){
+
+        int up = matrix[i][j] + prev[j];
+
+        int leftDigUp = matrix[i][j];
+        if(j-1>=0) leftDigUp += prev[j-1];
+        else leftDigUp += -1e9;
+
+        int rightDigUp = matrix[i][j];
+        if(j+1<m) rightDigUp += prev[j+1];
+        else rightDigUp += -1e9;
+
+        current[j] = max(up, max(leftDigUp, rightDigUp));
+      }
+      prev = current;
+    }
+
+    int maxi = -1e9;
+    for(int j=0; j<m; j++){
+      maxi = max(maxi, prev[j]);
+    }
     return maxi;
   }
 };
