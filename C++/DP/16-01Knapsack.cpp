@@ -3,7 +3,8 @@
 using namespace std;
 /************************Subsequences*************************/
 // in this problem a thief is trying to steal as much as possible but
-// his knapsack has a weight limit on how much it can carry 
+// his knapsack has a weight limit on how much it can carry
+// we can only pick an item once
 class Solution{
 public:
   /* ------------------------------------------------------------------- */

@@ -2,6 +2,9 @@
 #include <vector>
 using namespace std;
 /************************Subsequences*************************/
+// we are given a list of numbers and a target sum
+// we need to find the minimum amount of elements to reach that target sum
+// since we need the minimum amount we add 1 every time we recursively iterate
 class Solution{
 public:
   /* ------------------------------------------------------------------- */
