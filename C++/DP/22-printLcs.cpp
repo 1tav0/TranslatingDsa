@@ -23,14 +23,15 @@ public:
     int len = dp[n][m];
     string ans = "";
     for(int i=0; i<len; i++){
-      ans[i] = '$';
+      ans += '$';
     }
     int ind = len-1;
     int i = n, j = m;
     while(i > 0 && j > 0){
       if(s[i-1] == t[j-1]){
-        ans += s[i-1];
+        ans[ind] = s[i-1];
         ind--;
+        // ans += s[i-1];
         i--, j--;
       }else if(dp[i-1][j] > dp[i][j-1]){
         i--;
