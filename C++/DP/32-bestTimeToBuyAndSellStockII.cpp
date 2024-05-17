@@ -1,19 +1,6 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-/* ------------------------------------------------------------------- */
-//Recursion
-
-/* ------------------------------------------------------------------- */
-//Memoization
-
-
-/* ------------------------------------------------------------------- */
-//Tabulation
-
-
-/* ------------------------------------------------------------------- */
-//Space optimization
 /************************Stocks*************************/
 // have been given the stock values/prices for N days
 // find the max profit which we can get buy buying and selling the Stocks
