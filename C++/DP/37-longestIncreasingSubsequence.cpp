@@ -68,6 +68,24 @@ public:
     vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
     return helper2(0, arr, -1, n, dp);
   }
+  /* --------------------------version1----------------------------------------- */
+  //Tabulation
+  //tc - O(n`2)
+  //sc - O(n)
+  int longestIncreasingSubsequence3(int arr[], int n){
+    vector<vector<int>> dp(n+1, vector<int>(n+1, 0));
+    for(int ind=n-1; ind>=0; ind--){
+      for(int prev=ind-1; prev>=-1; prev--){
+        int notPick = 0 + dp[ind+1][prev+1];
+        int pick = -1e9;
+        if(prev == -1 || arr[ind] > arr[prev]){
+          pick = 1 + dp[ind+1][ind+1];
+        }
+        dp[ind][prev] = max(notPick, pick);
+      }
+    }
+    return dp[0][0];
+  }
   /* ------------------------------------------------------------------- */
   //Space optimization
   //tc - O(n`2)
@@ -88,7 +106,7 @@ public:
     }
     return ahead[-1+1];
   }
-  /* ------------------------------------------------------------------- */
+  /* --------------------------version2------------------------------------ */
   //Tabulation
   //tc - O(n`2)
   //sc - O(n)
