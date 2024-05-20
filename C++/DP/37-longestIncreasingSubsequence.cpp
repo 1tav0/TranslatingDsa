@@ -81,7 +81,7 @@ public:
         if(prev == -1 || arr[ind] > arr[prev]){
           pick = 1 + dp[ind+1][ind+1];
         }
-        dp[ind][prev] = max(notPick, pick);
+        dp[ind][prev+1] = max(notPick, pick);
       }
     }
     return dp[0][0];
@@ -136,6 +136,7 @@ public:
         temp.push_back(arr[ind]);
         len++;
       }else{
+        // finds the first element that is less than or equal to arr[ind]
         int i = lower_bound(temp.begin(), temp.end(), arr[ind]) - temp.begin();
         temp[i] = arr[ind];
       }
