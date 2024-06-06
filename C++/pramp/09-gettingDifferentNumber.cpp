@@ -6,36 +6,24 @@ using namespace std;
 
 int getDifferentNumber( const vector<int>& arr )
 {
-  // your code goes here
-  // 0 1 3
-  // 0 -> 1
-  // 1 -> 1
-  // 3 -> 1
   int n =  arr.size();
   unordered_map<int,int> mpp;
   for(int i=0; i<n; i++){
     mpp[arr[i]]++;
   }
-  /*
-    i = 0
-      map contains 0
-    i = 1
-       map contains 1
-    i = 2
-    i = 3
-
-    i = 4
-  */
   for(int i=0; i<=n; i++){ // incorrect
     if(!(mpp[i] != 0)){
       return i;
     }
+    // if (mpp[i] == 0) {
+    //   return i;
+    // }
   }
   return -1;
 }
 
 int main() {
-  const vector<int> arr = {0, 1, 2, 3};
+  const vector<int> arr = {0,5,4,6,3};
   int ans = getDifferentNumber(arr);
   cout << ans;
   return 0;

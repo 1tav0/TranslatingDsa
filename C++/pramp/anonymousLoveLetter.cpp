@@ -17,6 +17,7 @@ public:
     for(auto it: N){
       Nfreq[it]++;
     }
+
     // check if string L can be formed from string N
     for(auto& it: Lfreq){
       char ch = it.first;
@@ -30,8 +31,8 @@ public:
 };
 
 int main(){
-  string letter = "hello";
-  string newspaper = "worldhello";
+  string letter = "ronak";
+  string newspaper = "konar";
 
   Solution obj;
   bool ans = obj.canFormLetter(letter, newspaper);
