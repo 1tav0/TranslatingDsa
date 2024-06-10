@@ -19,7 +19,7 @@ public:
         int v = it[0];
         int wt = it[1];
         if(steps+wt < dist[v]){
-          dist[v] = dist[node] + wt;
+          dist[v] = steps + wt;
           pq.push({dist[v], v});
         }
       }

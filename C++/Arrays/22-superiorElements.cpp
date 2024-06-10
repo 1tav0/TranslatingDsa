@@ -6,6 +6,8 @@ using namespace std;
 class Solution{
 public:
   //Brute force
+  //tc - O(N^2)
+  //sc - O(N)
   vector<int> superiorElements1(vector<int> &arr){
     int n = arr.size();
     vector<int> ans;
@@ -25,6 +27,8 @@ public:
     return ans;
   }
   // optimal
+  //tc - O(N)
+  //sc - O(N)
   vector<int> superiorElements2(vector<int> &arr){
     int n = arr.size();
     vector<int> ans;
@@ -34,6 +38,21 @@ public:
         ans.push_back(arr[i]);
       }
       maxi = max(maxi, arr[i]);
+    }
+    return ans;
+  }
+  // optimal
+  //tc - O(N)
+  //sc - O(N)
+  vector<int> superiorElements3(vector<int> &arr){
+    vector<int> ans;
+    int n = arr.size();
+    int maxi = -1e9;
+    for(int i=n-1; i>=0; i--){
+        if(arr[i] > maxi){
+            maxi = arr[i];
+            ans.push_back(arr[i]);
+        }
     }
     return ans;
   }

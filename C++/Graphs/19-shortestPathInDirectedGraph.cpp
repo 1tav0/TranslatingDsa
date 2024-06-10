@@ -4,7 +4,7 @@
 #include <stack>
 using namespace std;
 
-//Shortest path in directed Acyclic Graph
+//Shortest path in weighted directed Acyclic Graph
 
 class Solution{
 public:

@@ -25,7 +25,7 @@ public:
     int delrow[] = {-1, 0, 1, 0};
     int delcol[] = {0, -1, 0, 1};
 
-    for(int i=0; i<m; i++){
+    for(int i=0; i<n; i++){
       //left col
       if(board[i][0]=='O' && !vis[i][0]){
         dfs(i, 0, vis, board, delrow, delcol);

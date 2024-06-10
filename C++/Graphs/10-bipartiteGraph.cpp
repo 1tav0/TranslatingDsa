@@ -37,6 +37,34 @@ public:
     }
     return true;
   }
+
+  bool dfs(int node, vector<int> &color, vector<int> adj[]) {
+    for (auto it : adj[node]) {
+        if (color[it] == -1) {
+            // Assign the opposite color to the adjacent node
+            color[it] = 1 - color[node];
+            if (!dfs(it, color, adj)) {
+                return false;
+            }
+        } else if (color[it] == color[node]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool isBipartite2(int V, vector<int> adj[]) {
+    vector<int> color(V, -1);
+    for (int i = 0; i < V; i++) {
+        if (color[i] == -1) {
+            color[i] = 0; // Start coloring the node with color 0
+            if (!dfs(i, color, adj)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 };
 
 
